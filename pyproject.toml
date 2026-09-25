@@ -5,19 +5,25 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "coxswain-plugins"
 version = "0.1.0"
-description = "Coxswain integrations that name a vendor, each registered by entry point: intake sources today."
+description = "Coxswain integrations that name a vendor, each registered by entry point: intake sources and system-one backends."
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.12"
-# The intake sources register with coxswain-tools' entry-point lookup (tools #506, in 0.16.0).
-dependencies = ["coxswain-tools>=0.16"]
+# No base dependencies: each plugin runs inside its host, which is already installed. Intake sources
+# load inside coxswain-tools (>= 0.16), system-one backends inside coxswain-graphs.
+dependencies = []
 
 [project.optional-dependencies]
+# The Jev system-one backend's client.
+jev = ["typesafe-sdk>=0.7.1"]
 dev = ["pytest", "ruff==0.16.6"]
 
 [project.entry-points."coxswain.sources"]
 jira = "coxswain_plugins.sources.jira"
 asana = "coxswain_plugins.sources.asana"
+
+[project.entry-points."coxswain.system_one"]
+jev = "coxswain_plugins.system_one.jev:make"
 
 [tool.setuptools.packages.find]
 include = ["coxswain_plugins*"]

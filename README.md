@@ -11,8 +11,17 @@ uv tool install coxswain-tools --with "coxswain-plugins @ git+https://github.com
 | Kind | Entry-point group | Plugins |
 | --- | --- | --- |
 | Intake sources for `cox route pull` | `coxswain.sources` | `jira`, `asana` |
+| System-one backends for coxswain-graphs | `coxswain.system_one` | `jev` (`pip install "coxswain-plugins[jev]"`) |
 
-System-one backends and runners are planned to register here too (Coxswain roadmap 0.18.0).
+Runners are planned to register here too (Coxswain roadmap 0.18.0).
+
+## System-one backends
+
+`jev` is TypeSafe AI's hosted System One model: typed yes/no, choice and score answers with calibrated
+confidence, over up to 64K tokens of state. Configure it in a provider profile's `system_one:` block with
+`backend: jev`, a pinned `model` (e.g. `jev-1.13.0`) and `key_env`, the environment variable that holds
+the TypeSafe key. Graphs reads the key from `key_env` only, never the provider's own key, and runs the
+backend in shadow until `cox stats system-one` says it has graduated.
 
 ## Intake sources
 
