@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with: { python-version: "3.12" }
+        with: { python-version: "3.14" }
       # the hosts the plugins load into: tools for intake sources, graphs for system-one backends
       - run: pip install "coxswain-tools>=0.16" "agent-graphs @ git+https://github.com/ppfenning/coxswain-graphs@main"
       - run: pip install -e ".[dev]"
