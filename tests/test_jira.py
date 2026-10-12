@@ -68,7 +68,7 @@ def test_candidates_by_label_returns_only_the_labelled_ticket():
 
 
 def test_candidates_with_an_unknown_filter_kind_returns_nothing():
-    assert source_jira.candidates(config("assignee:pat"), LISTING) == ()
+    assert source_jira.candidates(config("assignee:operator"), LISTING) == ()
 
 
 def test_read_normalises_a_ticket_and_a_null_description_becomes_empty():
@@ -110,7 +110,7 @@ def test_list_argv_refuses_a_token_env_mark_argv_cannot_read():
 
 
 def test_list_argv_refuses_an_unknown_filter_kind():
-    assert source_jira.list_argv(config("assignee:pat"), REPO)[2].endswith("exit 2")
+    assert source_jira.list_argv(config("assignee:operator"), REPO)[2].endswith("exit 2")
 
 
 def test_mark_argv_posts_one_comment_naming_the_path_and_makes_no_transition(curl_args):
