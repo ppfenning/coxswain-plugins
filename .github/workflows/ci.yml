@@ -9,6 +9,10 @@ jobs:
         with: { python-version: "3.14" }
       # the hosts the plugins load into: tools for intake sources, graphs for system-one backends
       - run: pip install "coxswain-tools>=0.16" "agent-graphs @ git+https://github.com/ppfenning/coxswain-graphs@main"
+      # this repo exists to name vendors, so the vendor rule is skipped; names come from a secret
+      - run: python .github/check_clean.py . --skip vendor
+        env:
+          COXSWAIN_CLEAN_DENY: ${{ secrets.COXSWAIN_CLEAN_DENY }}
       - run: pip install -e ".[dev]"
       - run: pytest -q
       - run: ruff check .
