@@ -1,19 +1,19 @@
 # coxswain-plugins
 
-Coxswain integrations that name a vendor. Coxswain's core repositories stay free of any vendor or employer
-name, and their CI enforces it. Each integration here registers under an entry-point group that core looks
+Coxswain integrations that name a vendor. Coxswain's core repository stays free of any vendor or employer
+name, and its CI enforces it. Each integration here registers under an entry-point group that core looks
 up by name, so installing this package beside `cox` is all it takes:
 
 ```sh
-uv tool install coxswain-tools --with "coxswain-plugins @ git+https://github.com/ppfenning/coxswain-plugins"
+uv tool install --python 3.14 coxswain --with "coxswain-plugins @ git+https://github.com/ppfenning/coxswain-plugins"
 ```
 
 | Kind | Entry-point group | Plugins |
 | --- | --- | --- |
 | Intake sources for `cox route pull` | `coxswain.sources` | `jira`, `asana` |
-| System-one backends for coxswain-graphs | `coxswain.system_one` | `jev` (`pip install "coxswain-plugins[jev]"`) |
+| System-one backends for the graphs harness | `coxswain.system_one` | `jev` (`pip install "coxswain-plugins[jev]"`) |
 
-Runners are planned to register here too (Coxswain roadmap 0.18.0).
+Runners can register under `coxswain.runners`; the harness looks one up by name when a provider profile's `runner:` is not built in. None ship here yet.
 
 ## System-one backends
 
