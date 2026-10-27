@@ -10,7 +10,7 @@ readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.12"
 # No base dependencies: each plugin runs inside its host, which is already installed. Intake sources
-# load inside coxswain-tools (>= 0.16), system-one backends inside coxswain-graphs.
+# and system-one backends load inside the `coxswain` package (>= 2026.10.0).
 dependencies = []
 
 [project.optional-dependencies]
